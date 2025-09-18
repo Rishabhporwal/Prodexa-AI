@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]         # PEP 660 editable support ke liye naya setuptools
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "prodexa-ai"
 version = "0.1.0"
@@ -21,6 +25,18 @@ dependencies = [
     "streamlit==1.49.1",
     "undetected-chromedriver==3.5.5",
     "uvicorn==0.35.0",
-    "structlog==25.4.0"
-
+    "structlog==25.4.0",
+    "langgraph==0.6.7"
 ]
+
+# Optional: authors, license
+authors = [{ name = "Rishabh Porwal" }]
+license = { text = "Proprietary" }
+
+# Optional: CLI command (python -m pip install -e . ke baad yeh create hoga)
+[project.scripts]
+ecomm-assistant = "prodexa_ai.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["prod_assistant"]
+include = ["prodexa_ai*"]
